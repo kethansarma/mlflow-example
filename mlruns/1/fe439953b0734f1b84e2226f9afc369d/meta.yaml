@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/Coding/DSprojects/mlflow-example/mlruns/1/fe439953b0734f1b84e2226f9afc369d/artifacts
+end_time: 1631452699711
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+name: ''
+run_id: fe439953b0734f1b84e2226f9afc369d
+run_uuid: fe439953b0734f1b84e2226f9afc369d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1631452672401
+status: 3
+tags: []
+user_id: Admin

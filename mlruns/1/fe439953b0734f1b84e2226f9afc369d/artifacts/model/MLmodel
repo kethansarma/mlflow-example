@@ -9,5 +9,5 @@ flavors:
     pickled_model: model.pkl
     serialization_format: cloudpickle
     sklearn_version: 0.23.1
-run_id: 11fe9cadc417409f86f45f6b86cef74b
-utc_time_created: '2021-09-12 12:07:11.255544'
+run_id: fe439953b0734f1b84e2226f9afc369d
+utc_time_created: '2021-09-12 13:18:00.250057'

@@ -45,7 +45,7 @@ if __name__ == "__main__":
     l1_ratio = float(sys.argv[2]) if len(sys.argv) > 2 else 0.5
     # mlflow.set_experiment("exp1")
     # mlflow.tracking.MlflowClient().set_tag(run_id, "mlflow.runName", "run_name")
-    # experiment_id = mlflow.create_experiment("exp1")
+    # experiment_id = mlflow.get_experiment()
     with mlflow.start_run() as run_exp:
         mlflow.set_tag("mlflow.runName", "run_name-exp1")
         lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)
@@ -65,5 +65,14 @@ if __name__ == "__main__":
         mlflow.log_metric("rmse", rmse)
         mlflow.log_metric("r2", r2)
         mlflow.log_metric("mae", mae)
-
         mlflow.sklearn.log_model(lr, "model")
+    # Search all runs in experiment_id
+    df = mlflow.search_runs(filter_string="metrics.rmse > 0.6")
+    # print(df.head())
+    run_id = df.loc[df['metrics.r2'].idxmin()]['run_id']
+    print(run_id)
+    # df.head()
+    # df = mlflow.search_runs([experiment_id], order_by=["metrics.rmse DESC"])
+    sk_model = mlflow.sklearn.load_model(f"runs:/{run_id}/model")
+    mlflow.sklearn.save_model(sk_model, "my_model")
+
